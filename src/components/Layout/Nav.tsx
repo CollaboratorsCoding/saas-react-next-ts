@@ -8,8 +8,8 @@ function Nav() {
         <a>Home</a>
       </Link>
 
-      <Link href="/signup">
-        <a>Auth</a>
+      <Link href="/secure">
+        <a>Secure</a>
       </Link>
     </NavStyles>
   );

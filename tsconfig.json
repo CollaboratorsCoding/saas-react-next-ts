@@ -25,6 +25,7 @@
       "@context/*": ["./src/context/*"],
       "@queries/*": ["./src/queries/*"],
       "@data/*": ["./src/data/*"],
+      "@HOC/*": ["./src/HOC/*"],
       "@typeDefs/*": ["./src/types/*"]
     }
   },
