@@ -25,11 +25,9 @@ export default (App) => {
         appProps = await App.getInitialProps(appContext);
       }
 
-      console.log(appContext.ctx.mobxStore);
-
       return {
         ...appProps,
-        initialMobxState: appContext.ctx.mobxStore,
+        initialMobxState: mobxStore,
       };
     }
 

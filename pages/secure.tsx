@@ -13,7 +13,7 @@ class Secure extends React.Component<{ userStore: any }> {
           <DatePicker />
           <h1 className="heading">
             Secure Page
-            {this.props.userStore.user && this.props.userStore.user.email}
+            {this.props.userStore.getUser && this.props.userStore.getUser.email}
           </h1>
         </div>
       </div>

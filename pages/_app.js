@@ -8,11 +8,8 @@ import withMobx from '../mobx/withMobx';
 import { Provider } from 'mobx-react';
 class MyApp extends NextApp {
   static async getInitialProps({ Component, ctx }) {
-    // const isServer = !!ctx.req;
-
-    console.log(ctx.mobxStore.userStore.user);
     if (!ctx.mobxStore.userStore.user) {
-      ctx.mobxStore.userStore.fetchUser(
+      await ctx.mobxStore.userStore.fetchUser(
         ctx.req ? { cookie: ctx.req.headers.cookie } : undefined
       );
     }

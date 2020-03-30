@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import fetch from 'isomorphic-unfetch';
 
 class UserStore {
@@ -7,18 +7,18 @@ class UserStore {
   constructor(initialData: any = {}) {
     this.user = initialData.user;
   }
-
+  @action
   async fetchUser(cookie: any) {
     const res = await fetch('http://localhost:3000/auth/me', {
       credentials: 'include',
       headers: cookie ? cookie : undefined,
     });
     const user = await res.json();
-    this.setUser(user.data);
+    this.user = user;
   }
 
-  @action setUser(user: any) {
-    this.user = user;
+  @computed get getUser() {
+    return this.user;
   }
 }
 

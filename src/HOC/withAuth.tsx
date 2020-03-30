@@ -9,7 +9,6 @@ export function withAuth(WrappedComponent: any) {
   @observer
   class InnerComp extends Component<any> {
     static async getInitialProps(ctx: any) {
-      console.log(ctx.mobxStore.userStore.user);
       const user =
         ctx.mobxStore &&
         !!ctx.mobxStore.userStore.user &&
