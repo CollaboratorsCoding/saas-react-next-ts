@@ -9,10 +9,7 @@ export function withAuth(WrappedComponent: any) {
   @observer
   class InnerComp extends Component<any> {
     static async getInitialProps(ctx: any) {
-      const user =
-        ctx.mobxStore &&
-        !!ctx.mobxStore.userStore.user &&
-        !!ctx.mobxStore.userStore.user.email;
+      const user = ctx.mobxStore && ctx.mobxStore.userStore.getUser;
       if (!user) {
         redirectToLogin(ctx.res);
       }

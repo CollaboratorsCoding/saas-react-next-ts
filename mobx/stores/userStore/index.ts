@@ -14,7 +14,7 @@ class UserStore {
       headers: cookie ? cookie : undefined,
     });
     const user = await res.json();
-    this.user = user;
+    this.user = user.data;
   }
 
   @computed get getUser() {
