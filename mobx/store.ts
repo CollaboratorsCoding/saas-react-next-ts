@@ -1,29 +1,24 @@
-import { action, observable } from 'mobx';
+import { useStaticRendering } from 'mobx-react';
+import UserStore from './stores/userStore';
 
-interface User {
-  email: string;
-  password: string;
-  _id: string;
-  __v: number;
-}
+const isServer = typeof window === 'undefined';
 
-let store: any = null;
+// eslint-disable-next-line react-hooks/rules-of-hooks
+useStaticRendering(isServer);
 
-export class Store {
-  @observable user = null;
+let store: { userStore: any } | null = null;
 
-  constructor(isServer: boolean, user: any) {
-    this.user = user;
-  }
-}
-
-export function initializeStore(isServer: boolean, user = null) {
+export default function initializeStore(initialData: any) {
   if (isServer) {
-    return new Store(isServer, user);
-  } else {
-    if (store === null) {
-      store = new Store(isServer, user);
-    }
-    return store;
+    return {
+      userStore: new UserStore(initialData && initialData.userStore),
+    };
   }
+  if (store === null) {
+    store = {
+      userStore: new UserStore(initialData && initialData.userStore),
+    };
+  }
+
+  return store;
 }

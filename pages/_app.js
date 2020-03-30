@@ -1,18 +1,35 @@
 import React from 'react';
 import NextApp from 'next/app';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { inject } from 'mobx-react';
 import Page from '@components/Layout/Page';
 import withApollo from '@services/apollo/withApollo';
-import fetch from 'isomorphic-unfetch';
 import withMobx from '../mobx/withMobx';
 import { Provider } from 'mobx-react';
 class MyApp extends NextApp {
+  static async getInitialProps({ Component, ctx }) {
+    // const isServer = !!ctx.req;
+
+    console.log(ctx.mobxStore.userStore.user);
+    if (!ctx.mobxStore.userStore.user) {
+      ctx.mobxStore.userStore.fetchUser(
+        ctx.req ? { cookie: ctx.req.headers.cookie } : undefined
+      );
+    }
+
+    let appProps = {};
+    if (typeof Component.getInitialProps === 'function') {
+      appProps = await Component.getInitialProps.call(Component, ctx);
+    }
+
+    return { ...appProps };
+  }
+
   render() {
     const { Component, pageProps, apollo, router, mobxStore } = this.props;
-
     return (
       <ApolloProvider client={apollo}>
-        <Provider store={mobxStore}>
+        <Provider {...mobxStore}>
           <Page>
             <Component {...pageProps} key={router.route} />
           </Page>
