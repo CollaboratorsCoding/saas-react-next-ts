@@ -25,7 +25,7 @@ class MyApp extends NextApp {
         : {};
     }
     if (!ctx.mobxStore.userStore.user && !ctx.mobxStore.userStore.checkedAuth) {
-      await ctx.mobxStore.userStore.setUser();
+      await ctx.mobxStore.userStore.getMe();
     }
 
     let appProps = {};

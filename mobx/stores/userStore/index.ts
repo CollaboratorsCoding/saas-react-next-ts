@@ -10,9 +10,9 @@ class UserStore {
     this.checkedAuth = initialData.checkedAuth;
   }
   @action
-  async setUser() {
+  async getMe() {
     try {
-      const res = await authService.getMe();
+      const res = await authService.me();
       this.checkedAuth = true;
       this.user = res.data;
     } catch (e) {
@@ -41,7 +41,7 @@ class UserStore {
     }
   }
 
-  @computed get getUser() {
+  @computed get me() {
     return this.user;
   }
 }

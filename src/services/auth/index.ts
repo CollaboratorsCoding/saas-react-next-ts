@@ -1,7 +1,7 @@
 import axios from '@services/axios';
 
 class AuthService {
-  async getMe() {
+  async me() {
     const { data } = await axios.get('/auth/me');
     return data;
   }
