@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import { darken } from 'polished';
 
 const getColor = ({
@@ -6,20 +6,20 @@ const getColor = ({
   color,
   name,
 }: {
-  theme: any;
+  theme: DefaultTheme;
   color?: string;
   name?: string;
 }) => {
   if (color) return color;
   switch (name) {
     case 'danger':
-      return theme.red;
+      return theme.colors.red;
     case 'success':
-      return theme.green;
+      return theme.colors.green;
     case 'warning':
-      return theme.yellow;
+      return theme.colors.yellow;
     default:
-      return theme.purple;
+      return theme.colors.purple;
   }
 };
 export const Button = styled.button`

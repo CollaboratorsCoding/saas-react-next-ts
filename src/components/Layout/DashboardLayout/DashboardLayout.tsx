@@ -11,7 +11,7 @@ const Content = styled.section`
 `;
 
 const Wrapper = styled.div`
-  background: ${(props) => props.theme.lightergray};
+  background: ${(props) => props.theme.colors.lightergray};
   display: grid;
   min-height: 100vh;
   grid-template-columns: 1fr;
