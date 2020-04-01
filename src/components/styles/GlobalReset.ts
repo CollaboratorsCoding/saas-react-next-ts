@@ -32,15 +32,20 @@ dd {
   margin: 0;
 }
 #__next { height: 100% }
+
+html {
+  font-size: 14px;
+}
 /* Set core body defaults */
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: Raleway;
+  font-family: 'Montserrat', sans-serif;
   font-weight: normal;
   font-style: normal;
+ 
 }
 a {
   text-decoration: none;
