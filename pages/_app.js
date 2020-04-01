@@ -1,11 +1,21 @@
 import React from 'react';
 import NextApp from 'next/app';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { inject } from 'mobx-react';
-import Page from '@components/Layout/Page';
-import withApollo from '@services/apollo/withApollo';
+import NProgress from 'nprogress';
+import Layout from '@components/Layout/Layout';
+import Router from 'next/router';
 import withMobx from '../mobx/withMobx';
 import { Provider } from 'mobx-react';
+
+Router.onRouteChangeStart = () => {
+  NProgress.start();
+};
+Router.onRouteChangeComplete = () => {
+  NProgress.done();
+};
+
+Router.onRouteChangeError = () => {
+  NProgress.done();
+};
 class MyApp extends NextApp {
   static async getInitialProps({ Component, ctx }) {
     if (!ctx.mobxStore.userStore.user) {
@@ -23,17 +33,15 @@ class MyApp extends NextApp {
   }
 
   render() {
-    const { Component, pageProps, apollo, router, mobxStore } = this.props;
+    const { Component, pageProps, router, mobxStore } = this.props;
     return (
-      <ApolloProvider client={apollo}>
-        <Provider {...mobxStore}>
-          <Page>
-            <Component {...pageProps} key={router.route} />
-          </Page>
-        </Provider>
-      </ApolloProvider>
+      <Provider {...mobxStore}>
+        <Layout isDashboard={router.route === '/dashboard'}>
+          <Component {...pageProps} key={router.route} />
+        </Layout>
+      </Provider>
     );
   }
 }
 
-export default withApollo(withMobx(MyApp));
+export default withMobx(MyApp);

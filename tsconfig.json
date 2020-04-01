@@ -26,7 +26,8 @@
       "@queries/*": ["./src/queries/*"],
       "@data/*": ["./src/data/*"],
       "@HOC/*": ["./src/HOC/*"],
-      "@typeDefs/*": ["./src/types/*"]
+      "@typeDefs/*": ["./src/types/*"],
+      "@styles/*": ["./src/components/styles/*"]
     }
   },
   "exclude": ["node_modules"],
