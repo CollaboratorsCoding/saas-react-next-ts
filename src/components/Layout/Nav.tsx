@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import { observer, inject } from 'mobx-react';
 import NavStyles from '../styles/NavStyles';
-function Nav() {
+function Nav(props: any) {
   return (
     <NavStyles>
       <Link href="/">
@@ -9,10 +10,14 @@ function Nav() {
       </Link>
 
       <Link href="/secure">
-        <a>Secure</a>
+        <a>
+          {props.userStore.user && props.userStore.user.email
+            ? props.userStore.user.email
+            : 'Secure'}
+        </a>
       </Link>
     </NavStyles>
   );
 }
 
-export default Nav;
+export default inject('userStore')(observer(Nav));
