@@ -34,9 +34,12 @@ class MyApp extends NextApp {
 
   render() {
     const { Component, pageProps, router, mobxStore } = this.props;
+
+    const rootRoutePath = router.route.split('/')[1];
+
     return (
       <Provider {...mobxStore}>
-        <Layout isDashboard={router.route === '/dashboard'}>
+        <Layout isDashboard={rootRoutePath === 'dashboard'}>
           <Component {...pageProps} key={router.route} />
         </Layout>
       </Provider>
