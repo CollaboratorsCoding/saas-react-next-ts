@@ -11,7 +11,7 @@ const Content = styled.section`
 `;
 
 const Wrapper = styled.div`
-  background: ${(props) => props.theme.lightgray};
+  background: ${(props) => props.theme.colors.lightgray};
   display: grid;
   min-height: 100vh;
 

@@ -14,16 +14,16 @@ const NavStyles = styled.div`
       font-size: 1rem;
       margin: 0 10px;
       font-weight: 600;
-      color: ${(props) => props.theme.black};
+      color: ${(props) => props.theme.colors.black};
       transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
       &:hover {
-        color: ${(props) => props.theme.textgray};
+        color: ${(props) => props.theme.colors.textgray};
       }
       &.signup {
         padding: 8px 22px;
         background-color: #fff;
         border-radius: 8px;
-        color: ${(props) => props.theme.purple};
+        color: ${(props) => props.theme.colors.purple};
         box-shadow: ${(props) => props.theme.bs};
         transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
         position: relative;

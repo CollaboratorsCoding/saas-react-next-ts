@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.header`
   grid-area: head;
-  background: ${(props) => props.theme.lightgray};
+  background: ${(props) => props.theme.colors.lightgray};
 
   padding: 20px;
 `;
