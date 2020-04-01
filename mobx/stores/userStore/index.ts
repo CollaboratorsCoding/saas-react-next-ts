@@ -1,20 +1,44 @@
 import { observable, action, computed } from 'mobx';
-import fetch from 'isomorphic-unfetch';
+import authService from '@services/auth';
 
 class UserStore {
   @observable user = null;
+  @observable checkedAuth = false;
 
   constructor(initialData: any = {}) {
     this.user = initialData.user;
+    this.checkedAuth = initialData.checkedAuth;
   }
   @action
-  async fetchUser(cookie: any) {
-    const res = await fetch('http://localhost:3000/auth/me', {
-      credentials: 'include',
-      headers: cookie ? cookie : undefined,
-    });
-    const user = await res.json();
-    this.user = user.data;
+  async setUser() {
+    try {
+      const res = await authService.getMe();
+      this.checkedAuth = true;
+      this.user = res.data;
+    } catch (e) {
+      this.checkedAuth = true;
+      console.log(e);
+    }
+  }
+
+  @action
+  async signIn(form = {}) {
+    try {
+      const res = await authService.signIn(form);
+      this.user = res.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  @action
+  async logout() {
+    try {
+      await authService.logout();
+      this.user = null;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   @computed get getUser() {

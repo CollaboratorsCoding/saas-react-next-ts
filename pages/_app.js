@@ -1,17 +1,21 @@
 import React from 'react';
 import NextApp from 'next/app';
 import { ApolloProvider } from '@apollo/react-hooks';
-import { inject } from 'mobx-react';
 import Page from '@components/Layout/Page';
 import withApollo from '@services/apollo/withApollo';
 import withMobx from '../mobx/withMobx';
 import { Provider } from 'mobx-react';
+
+import axios from '@services/axios';
 class MyApp extends NextApp {
   static async getInitialProps({ Component, ctx }) {
-    if (!ctx.mobxStore.userStore.user) {
-      await ctx.mobxStore.userStore.fetchUser(
-        ctx.req ? { cookie: ctx.req.headers.cookie } : undefined
-      );
+    if (ctx && ctx.req) {
+      axios.service.defaults.headers.common['cookie'] = ctx.req.headers.cookie
+        ? ctx.req.headers.cookie
+        : {};
+    }
+    if (!ctx.mobxStore.userStore.user && !ctx.mobxStore.userStore.checkedAuth) {
+      await ctx.mobxStore.userStore.setUser();
     }
 
     let appProps = {};
