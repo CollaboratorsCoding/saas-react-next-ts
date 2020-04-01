@@ -17,7 +17,7 @@ class UserStore {
       this.user = res.data;
     } catch (e) {
       this.checkedAuth = true;
-      console.log(e.response.status);
+      console.log(e);
     }
   }
 
@@ -27,7 +27,7 @@ class UserStore {
       const res = await authService.signIn(form);
       this.user = res.data;
     } catch (e) {
-      console.log(e.response.status);
+      console.log(e);
     }
   }
 

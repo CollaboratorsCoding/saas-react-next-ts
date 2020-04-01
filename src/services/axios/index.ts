@@ -38,9 +38,13 @@ class Service {
     return this.service.get(path);
   }
 
-  patch(path: string, payload: any) {
+  delete(path: string) {
+    return this.service.delete(path);
+  }
+
+  put(path: string, payload: any) {
     return this.service.request({
-      method: 'PATCH',
+      method: 'PUT',
       url: path,
       responseType: 'json',
       data: payload,
