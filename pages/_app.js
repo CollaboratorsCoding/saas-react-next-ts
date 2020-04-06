@@ -4,8 +4,9 @@ import withMobx from '../mobx/withMobx';
 import { Provider } from 'mobx-react';
 import axios from '@services/axios';
 import NProgress from 'nprogress';
-import Layout from '@components/Layout/Layout';
+import Layout from '@components/layout/Layout';
 import Router from 'next/router';
+import { withAuth } from '@HOC/withAuth';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -17,6 +18,20 @@ Router.onRouteChangeComplete = () => {
 Router.onRouteChangeError = () => {
   NProgress.done();
 };
+
+const routes = {
+  '/': {},
+  '/features': {},
+  '/pricing': {},
+  '/signup': {},
+  '/dashboard': {
+    auth: true,
+  },
+  '/dashboard/settings': {
+    auth: true,
+  },
+};
+
 class MyApp extends NextApp {
   static async getInitialProps({ Component, ctx }) {
     if (ctx && ctx.req) {
@@ -29,8 +44,14 @@ class MyApp extends NextApp {
     }
 
     let appProps = {};
-    if (typeof Component.getInitialProps === 'function') {
-      appProps = await Component.getInitialProps.call(Component, ctx);
+
+    const currentRoute = ctx.pathname;
+    const Page =
+      routes[currentRoute] && routes[currentRoute].auth
+        ? withAuth(Component)
+        : Component;
+    if (typeof Page.getInitialProps === 'function') {
+      appProps = await Page.getInitialProps.call(Page, ctx);
     }
 
     return { ...appProps };
@@ -38,12 +59,9 @@ class MyApp extends NextApp {
 
   render() {
     const { Component, pageProps, router, mobxStore } = this.props;
-
-    const rootRoutePath = router.route.split('/')[1];
-
     return (
       <Provider {...mobxStore}>
-        <Layout isDashboard={rootRoutePath === 'dashboard'}>
+        <Layout currentRoute={router.route}>
           <Component {...pageProps} key={router.route} />
         </Layout>
       </Provider>

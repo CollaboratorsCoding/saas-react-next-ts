@@ -8,7 +8,7 @@ const StyledNav = styled.ul`
   margin-left: auto;
   flex-direction: column;
   height: 100%;
-
+  margin-top: 40px;
   align-items: center;
 
   a {

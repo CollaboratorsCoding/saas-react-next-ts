@@ -11,20 +11,20 @@ const StyledHeader = styled.div`
 const StyledWelcome = styled.div`
   background: ${({ theme }) => theme.colors.rose};
   padding: 60px 20px;
+  border-radius: 8px;
   position: relative;
-  border-radius 8px;
+
   .welcome-header {
     color: ${({ theme }) => theme.colors.red};
     font-size: 1.5rem;
     font-weight: 600;
   }
   .welcome-content {
-  
     color: ${({ theme }) => theme.colors.lightblack};
   }
   img {
     position: absolute;
-   
+
     height: 110%;
     right: 0;
     bottom: 0;

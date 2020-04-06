@@ -17,7 +17,7 @@ class UserStore {
       this.user = res.data;
     } catch (e) {
       this.checkedAuth = true;
-      console.log(e);
+      // console.log(e);
     }
   }
 

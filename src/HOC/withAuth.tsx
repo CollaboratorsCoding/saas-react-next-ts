@@ -1,8 +1,5 @@
-import { NextPageContext } from 'next';
 import React, { Component } from 'react';
-import nextCookie from 'next-cookies';
 import { redirectToLogin } from '@services/redirectService';
-import { observer, inject } from 'mobx-react';
 
 export function withAuth(WrappedComponent: any) {
   class InnerComp extends Component<any> {

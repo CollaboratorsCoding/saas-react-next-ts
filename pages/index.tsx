@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SubHeader, ExtraLargeHeader } from '@styles/Typography';
-import { Button } from '@styles/Buttons';
+import { SubHeader, ExtraLargeHeader } from '@styles/Typography.styles';
+import { Button } from '@styles/Buttons.styles';
 import Link from 'next/link';
 const Hero = styled.section`
   display: flex;

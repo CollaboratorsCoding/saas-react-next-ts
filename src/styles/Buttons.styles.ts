@@ -22,6 +22,7 @@ const getColor = ({
       return theme.colors.purple;
   }
 };
+
 export const Button = styled.button`
   background: ${({ color, theme, name }) => {
     return getColor({ color, theme, name });

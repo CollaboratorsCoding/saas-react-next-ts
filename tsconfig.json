@@ -25,9 +25,10 @@
       "@context/*": ["./src/context/*"],
       "@queries/*": ["./src/queries/*"],
       "@data/*": ["./src/data/*"],
+      "@utils/*": ["./src/utils/*"],
       "@HOC/*": ["./src/HOC/*"],
       "@typeDefs/*": ["./src/types/*"],
-      "@styles/*": ["./src/components/styles/*"]
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "exclude": ["node_modules"],

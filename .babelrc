@@ -15,7 +15,8 @@
           "@queries": "./src/queries",
           "@data": "./src/data",
           "@typeDefs": "./src/types",
-          "@styles": "./src/components/styles",
+          "@styles": "./src/styles",
+          "@utils": "./src/utils",
           "@HOC": "./src/HOC"
         }
       }

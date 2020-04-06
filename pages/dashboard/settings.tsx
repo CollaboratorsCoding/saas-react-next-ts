@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { withAuth } from '@HOC/withAuth';
 const Hero = styled.section`
   display: flex;
   flex-direction: column;
@@ -24,4 +23,4 @@ class SettingsPage extends React.Component<{}> {
   }
 }
 
-export default withAuth(SettingsPage);
+export default SettingsPage;

@@ -5,12 +5,12 @@ import Meta from './Meta';
 
 type Props = { children: React.ReactNode };
 
-const Content = styled.section`
+const StyledContent = styled.section`
   grid-area: main;
   margin: 0 auto;
 `;
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   background: ${(props) => props.theme.colors.lightgray};
   display: grid;
   min-height: 100vh;
@@ -29,10 +29,10 @@ function HomeLayout({ children }: Props): ReactElement {
   return (
     <>
       <Meta></Meta>
-      <Wrapper>
+      <StyledWrapper>
         <Header></Header>
-        <Content>{children}</Content>
-      </Wrapper>
+        <StyledContent>{children}</StyledContent>
+      </StyledWrapper>
     </>
   );
 }

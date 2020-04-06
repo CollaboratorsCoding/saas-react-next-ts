@@ -7,14 +7,14 @@ import PreviewSidebar from './PreviewSidebar';
 
 type Props = { children: React.ReactNode };
 
-const Content = styled.section`
+const StyledContent = styled.section`
   grid-area: main;
   padding: 20px;
   background: ${({ theme }) => theme.colors.lightgray};
   display: flex;
 `;
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   display: grid;
   min-height: 100vh;
   grid-template-columns: minmax(auto, 225px) 1fr minmax(auto, 300px);
@@ -26,17 +26,17 @@ const Wrapper = styled.div`
     'leftsidebar main rightsidebar'
     'leftsidebar main rightsidebar';
 `;
-function HomeLayout({ children }: Props): ReactElement {
+function DashboardLayout({ children }: Props): ReactElement {
   return (
     <>
       <Meta></Meta>
-      <Wrapper>
+      <StyledWrapper>
         <MenuSidebar />
-        <Content>{children}</Content>
+        <StyledContent>{children}</StyledContent>
         <PreviewSidebar />
-      </Wrapper>
+      </StyledWrapper>
     </>
   );
 }
 
-export default HomeLayout;
+export default DashboardLayout;

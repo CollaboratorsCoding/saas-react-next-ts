@@ -3,9 +3,9 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import withApollo from '@services/apollo/withApollo';
 import { ApolloClient } from 'apollo-client';
 import { observer, inject } from 'mobx-react';
-import { withAuth } from '@HOC/withAuth';
+
 import styled from 'styled-components';
-import Header from '@components/Layout/DashboardLayout/Header';
+import Header from '@components/Dashboard/Header';
 
 const DashboardWrapper = styled.section`
   display: flex;

@@ -11,23 +11,23 @@ const StyledPreviewSidebar = styled.aside`
   padding: 20px;
 `;
 
-const LogOutWrapper = styled.header`
+const StyledLogOutWrapper = styled.header`
   flex: 0 1 10%;
   margin-bottom: auto;
 `;
-const InfoBoxWrapper = styled.main`
+const StyledInfoBoxWrapper = styled.main`
   flex: 0 1 85%;
 `;
 
 function Header() {
   return (
     <StyledPreviewSidebar>
-      <LogOutWrapper>
+      <StyledLogOutWrapper>
         <div>Logout</div>
-      </LogOutWrapper>
-      <InfoBoxWrapper>
+      </StyledLogOutWrapper>
+      <StyledInfoBoxWrapper>
         <div>Main Info</div>
-      </InfoBoxWrapper>
+      </StyledInfoBoxWrapper>
     </StyledPreviewSidebar>
   );
 }

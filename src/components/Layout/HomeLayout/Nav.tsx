@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const NavStyles = styled.div`
+const StyledNavigation = styled.nav`
   grid-column: 2 / 5;
   display: flex;
 
@@ -53,7 +53,7 @@ const NavStyles = styled.div`
 
 function Nav() {
   return (
-    <NavStyles>
+    <StyledNavigation>
       <ul>
         <Link href="/">
           <a>Home</a>
@@ -71,7 +71,7 @@ function Nav() {
           <a className="signup">Sign up</a>
         </Link>
       </ul>
-    </NavStyles>
+    </StyledNavigation>
   );
 }
 

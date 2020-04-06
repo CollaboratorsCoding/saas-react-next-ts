@@ -12,18 +12,15 @@ const StyledMenuSidebar = styled.aside`
   flex-direction: column;
 `;
 
-const LogoWrapper = styled.header`
+const StyledLogoWrapper = styled.header`
   flex: 0 1 10%;
-
   img {
     width: 80%;
     margin: auto;
   }
 `;
-const NavWrapper = styled.nav`
-  margin-top: 40px;
-`;
-const NotifWrapper = styled.footer`
+
+const StyledNotifWrapper = styled.footer`
   flex: 0 1 20%;
   margin-top: auto;
 `;
@@ -31,15 +28,13 @@ const NotifWrapper = styled.footer`
 function Header() {
   return (
     <StyledMenuSidebar>
-      <LogoWrapper>
+      <StyledLogoWrapper>
         <img src="/logo.svg" alt="Logo" />
-      </LogoWrapper>
-      <NavWrapper>
-        <Nav />
-      </NavWrapper>
-      <NotifWrapper>
+      </StyledLogoWrapper>
+      <Nav />
+      <StyledNotifWrapper>
         <NotificationBox />
-      </NotifWrapper>
+      </StyledNotifWrapper>
     </StyledMenuSidebar>
   );
 }

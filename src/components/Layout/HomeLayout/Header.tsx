@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   padding: 20px;
 `;
 
-const Logo = styled.div`
+const StyledLogo = styled.div`
   grid-column: 1;
   display: flex;
 
@@ -20,7 +20,7 @@ const Logo = styled.div`
   }
 `;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   width: 1140px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -33,17 +33,16 @@ const Container = styled.div`
 function Header() {
   return (
     <StyledHeader>
-      <Container>
-        <Logo>
+      <StyledContainer>
+        <StyledLogo>
           <Link href="/">
             <a>
               <img src="/logo.svg" alt="Logo" />
             </a>
           </Link>
-        </Logo>
-
+        </StyledLogo>
         <Nav />
-      </Container>
+      </StyledContainer>
     </StyledHeader>
   );
 }

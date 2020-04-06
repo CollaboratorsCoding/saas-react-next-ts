@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import { Button } from '@styles/Buttons';
+import { Button } from '@styles/Buttons.styles';
 
 const StyledBox = styled.div`
   background: ${({ theme }) => theme.colors.lightgray};
@@ -9,24 +9,25 @@ const StyledBox = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  
+
   align-items: center;
   position: relative;
   padding: 20px;
-    text-align: center;
-    line-height: 17px;
-}
+  text-align: center;
+  line-height: 17px;
+
   img {
-    width: 70%;
+    width: 63%;
     position: absolute;
-    top: -40%;
+    top: -60%;
   }
-  button { margin-top: 20px;}
+  button {
+    margin-top: 20px;
+  }
   .upgrade-label {
     margin-top: auto;
     font-weight: 600;
     color: ${({ theme }) => theme.colors.textgray};
-   
   }
 `;
 

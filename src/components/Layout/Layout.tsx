@@ -1,9 +1,11 @@
 import React from 'react';
 
-import DashboardLayout from './DashboardLayout/DashboardLayout';
-import HomeLayout from './HomeLayout/HomeLayout';
-import GlobalReset from '../styles/GlobalReset';
+import DashboardLayout from '@components/layout/DashboardLayout';
+import HomeLayout from '@components/layout/HomeLayout';
+import GlobalReset from '@styles/GlobalReset.styles';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
+
+import { getRootRoute } from '@utils/routeUtils';
 
 const theme: DefaultTheme = {
   colors: {
@@ -26,16 +28,25 @@ const theme: DefaultTheme = {
   bs: '0px 1px 2px 0px rgba(204, 204, 204, 0.3);',
   bsHover: '0px 2px 4px 2px rgba(204, 204, 204, 0.4);',
 };
-type PageProps = { children: React.ReactNode; isDashboard: boolean };
 
-const Page = ({ children, isDashboard }: PageProps) => (
-  <ThemeProvider theme={theme}>
-    <GlobalReset />
-    {isDashboard ? (
-      <DashboardLayout>{children}</DashboardLayout>
-    ) : (
-      <HomeLayout>{children}</HomeLayout>
-    )}
-  </ThemeProvider>
-);
-export default Page;
+type PageProps = { children: React.ReactNode; currentRoute: string };
+
+const Layout = ({ children, currentRoute }: PageProps) => {
+  let Layout = HomeLayout;
+  const rootRoute = getRootRoute(currentRoute);
+  if (rootRoute === 'dashboard') {
+    Layout = DashboardLayout;
+  }
+  // EXAMPLE
+  // if (rootRoute === 'signup') {
+  //   Layout = AuthLayout;
+  // }
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalReset />
+      <Layout>{children}</Layout>
+    </ThemeProvider>
+  );
+};
+
+export default Layout;

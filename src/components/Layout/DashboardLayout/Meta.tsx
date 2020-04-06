@@ -15,7 +15,7 @@ function Meta() {
       />
       {/* <link rel="stylesheet" type="text/css" href="/nprogress.css" /> */}
       {/* <script src="https://js.stripe.com/v3/" /> */}
-      <title>SaaS Application</title>
+      <title>Dashboard Title</title>
     </Head>
   );
 }
