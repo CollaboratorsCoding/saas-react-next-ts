@@ -6,9 +6,9 @@ class UserStore implements IUserStore {
   @observable user = null;
   @observable checkedAuth = false;
 
-  constructor(initialData: any = {}) {
-    this.user = initialData.user || null;
-    this.checkedAuth = initialData.checkedAuth || false;
+  constructor(initialData: any) {
+    this.user = initialData?.user || null;
+    this.checkedAuth = initialData?.checkedAuth || false;
   }
 
   @action
