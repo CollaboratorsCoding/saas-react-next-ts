@@ -1,32 +1,42 @@
 import React, { ReactElement } from 'react';
 
 import styled from 'styled-components';
+import Meta from './Meta';
+import MenuSidebar from './MenuSidebar';
+import PreviewSidebar from './PreviewSidebar';
 
 type Props = { children: React.ReactNode };
 
 const Content = styled.section`
   grid-area: main;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
+  background: ${({ theme }) => theme.colors.lightgray};
+  display: flex;
 `;
 
 const Wrapper = styled.div`
-  background: ${(props) => props.theme.colors.lightergray};
   display: grid;
   min-height: 100vh;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 1fr 100px;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-template-columns: minmax(auto, 225px) 1fr minmax(auto, 300px);
+  grid-template-rows: 1fr;
   justify-items: stretch;
   align-items: stretch;
   grid-template-areas:
-    'head head head'
-    'main main main'
-    'foot foot foot';
+    'leftsidebar main rightsidebar'
+    'leftsidebar main rightsidebar'
+    'leftsidebar main rightsidebar';
 `;
 function HomeLayout({ children }: Props): ReactElement {
-  return <>{children}</>;
+  return (
+    <>
+      <Meta></Meta>
+      <Wrapper>
+        <MenuSidebar />
+        <Content>{children}</Content>
+        <PreviewSidebar />
+      </Wrapper>
+    </>
+  );
 }
 
 export default HomeLayout;
