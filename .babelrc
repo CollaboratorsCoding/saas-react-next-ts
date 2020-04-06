@@ -15,12 +15,12 @@
           "@queries": "./src/queries",
           "@data": "./src/data",
           "@typeDefs": "./src/types",
+          "@interfaces": "./src/interfaces",
           "@styles": "./src/components/styles",
           "@HOC": "./src/HOC"
         }
       }
     ],
     ["@babel/plugin-proposal-decorators", { "legacy": true }]
-  
   ]
 }

@@ -1,14 +1,16 @@
 import { observable, action, computed } from 'mobx';
 import authService from '@services/auth';
+import { IUserStore } from '@interfaces/user';
 
-class UserStore {
+class UserStore implements IUserStore {
   @observable user = null;
   @observable checkedAuth = false;
 
   constructor(initialData: any = {}) {
-    this.user = initialData.user;
-    this.checkedAuth = initialData.checkedAuth;
+    this.user = initialData.user || null;
+    this.checkedAuth = initialData.checkedAuth || false;
   }
+
   @action
   async getMe() {
     try {
