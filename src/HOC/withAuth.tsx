@@ -7,7 +7,7 @@ import { observer, inject } from 'mobx-react';
 export function withAuth(WrappedComponent: any) {
   class InnerComp extends Component<any> {
     static async getInitialProps(ctx: any) {
-      const user = ctx.mobxStore && ctx.mobxStore.userStore.getUser;
+      const user = ctx.mobxStore && ctx.mobxStore.userStore.me;
       if (!user) {
         redirectToLogin(ctx.res);
       }
