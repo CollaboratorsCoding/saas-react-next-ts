@@ -17,11 +17,11 @@
           "@typeDefs": "./src/types",
           "@styles": "./src/styles",
           "@utils": "./src/utils",
+          "@interfaces": "./src/interfaces",
           "@HOC": "./src/HOC"
         }
       }
     ],
     ["@babel/plugin-proposal-decorators", { "legacy": true }]
-  
   ]
 }

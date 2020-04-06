@@ -27,6 +27,7 @@
       "@data/*": ["./src/data/*"],
       "@utils/*": ["./src/utils/*"],
       "@HOC/*": ["./src/HOC/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
       "@typeDefs/*": ["./src/types/*"],
       "@styles/*": ["./src/styles/*"]
     }
