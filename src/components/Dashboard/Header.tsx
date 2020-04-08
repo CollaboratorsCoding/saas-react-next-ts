@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
+import { IUserMe } from '@interfaces/store/user/';
 const StyledHeader = styled.div`
   width: 100%;
   height: 100%;
@@ -60,7 +61,10 @@ const StyledTopHeader = styled.div`
     }
   }
 `;
-function Header(): ReactElement {
+
+type Props = { me: IUserMe };
+
+function Header({ me }: Props) {
   return (
     <StyledHeader>
       <StyledTopHeader>
@@ -73,7 +77,7 @@ function Header(): ReactElement {
         </div>
       </StyledTopHeader>
       <StyledWelcome>
-        <div className="welcome-header">Welcome back, Name</div>
+        <div className="welcome-header">Welcome back, {me.email}</div>
         <div className="welcome-content">
           Since your last visit your app quick stats:
         </div>

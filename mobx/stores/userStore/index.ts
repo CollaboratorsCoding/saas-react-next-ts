@@ -1,14 +1,18 @@
 import { observable, action, computed } from 'mobx';
 import authService from '@services/auth';
-import { IUserStore } from '@interfaces/user';
+import {
+  IUserStore,
+  IUserMe,
+  IUserStoreInitialData,
+} from '@interfaces/store/user';
 
 class UserStore implements IUserStore {
-  @observable user = null;
+  @observable currentUser: IUserMe | null = null;
   @observable checkedAuth = false;
 
-  constructor(initialData: any) {
-    this.user = initialData?.user || null;
-    this.checkedAuth = initialData?.checkedAuth || false;
+  constructor(initialData: IUserStoreInitialData | undefined) {
+    this.currentUser = initialData?.currentUser || null;
+    this.checkedAuth = !!initialData?.checkedAuth;
   }
 
   @action
@@ -16,7 +20,7 @@ class UserStore implements IUserStore {
     try {
       const res = await authService.me();
       this.checkedAuth = true;
-      this.user = res.data;
+      this.currentUser = res.data;
     } catch (e) {
       this.checkedAuth = true;
       // console.log(e);
@@ -27,7 +31,7 @@ class UserStore implements IUserStore {
   async signIn(form = {}) {
     try {
       const res = await authService.signIn(form);
-      this.user = res.data;
+      this.currentUser = res.data;
     } catch (e) {
       console.log(e);
     }
@@ -37,14 +41,14 @@ class UserStore implements IUserStore {
   async logout() {
     try {
       await authService.logout();
-      this.user = null;
+      this.currentUser = null;
     } catch (e) {
       console.log(e);
     }
   }
 
   @computed get me() {
-    return this.user;
+    return this.currentUser;
   }
 }
 

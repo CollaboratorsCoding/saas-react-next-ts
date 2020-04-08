@@ -6,6 +6,7 @@ import { observer, inject } from 'mobx-react';
 
 import styled from 'styled-components';
 import Header from '@components/Dashboard/Header';
+import { IUserStore, IUserMe } from '@interfaces/store/user/';
 
 const DashboardWrapper = styled.section`
   display: flex;
@@ -43,15 +44,17 @@ const StyledBox = styled.div`
 @inject('userStore')
 @observer
 class Dashboard extends React.Component<{
-  userStore: any;
+  userStore: IUserStore<IUserMe>;
   apollo: ApolloClient<any>;
 }> {
   render() {
+    const { userStore } = this.props;
+
     return (
       <ApolloProvider client={this.props.apollo}>
         <DashboardWrapper>
           <DashboardHeader>
-            <Header />
+            <Header me={userStore.me} />
           </DashboardHeader>
           <DashboardMain>
             <StyledBox /> <StyledBox />

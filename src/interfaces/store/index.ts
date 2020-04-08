@@ -1,12 +1,9 @@
-import { IUserStore, IUser } from '@interfaces/user';
+import { IUserStore, IUserStoreInitialData } from './user';
 
 export interface IStore {
   userStore: IUserStore;
 }
 
-export interface IInitialData {
-  userStore: {
-    user: IUser | null;
-    checkedAuth: boolean;
-  };
+export interface IStoreInitialData {
+  userStore: IUserStoreInitialData;
 }

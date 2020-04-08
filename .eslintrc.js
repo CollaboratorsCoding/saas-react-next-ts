@@ -12,7 +12,7 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': [
       'error',
       {
-        prefixWithI: 'always',
+        prefixWithI: 'none',
       },
     ],
     '@typescript-eslint/no-explicit-any': 0,

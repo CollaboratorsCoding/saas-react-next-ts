@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SubHeader, ExtraLargeHeader } from '@styles/Typography.styles';
 import { Button } from '@styles/Buttons.styles';
+import { IContextWithMobx } from '@interfaces/next';
 import Link from 'next/link';
 const Hero = styled.section`
   display: flex;
@@ -31,5 +32,10 @@ const IndexPage = () => (
     <Image src="/dash.svg" alt="Logo" />
   </Hero>
 );
+IndexPage.getInitialProps = async ({ mobxStore }: IContextWithMobx) => {
+  // calls page's `getInitialProps` and fills `appProps.pageProps`
+  console.log(mobxStore.userStore.me);
 
+  return {};
+};
 export default IndexPage;

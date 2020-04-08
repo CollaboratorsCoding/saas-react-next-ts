@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { redirectToLogin } from '@services/redirectService';
+import { IContextWithMobx } from '@interfaces/next';
+import { NextPage } from 'next';
 
-export function withAuth(WrappedComponent: any) {
-  class InnerComp extends Component<any> {
-    static async getInitialProps(ctx: any) {
+export function withAuth(WrappedComponent: NextPage) {
+  class InnerComp extends Component {
+    static async getInitialProps(ctx: IContextWithMobx) {
       const user = ctx.mobxStore && ctx.mobxStore.userStore.me;
       if (!user) {
         redirectToLogin(ctx.res);
       }
 
       if (WrappedComponent.getInitialProps) {
-        const wrappedProps = await WrappedComponent.getInitialProps();
+        const wrappedProps = await WrappedComponent.getInitialProps(ctx);
 
         return { ...wrappedProps };
       }
@@ -18,7 +20,7 @@ export function withAuth(WrappedComponent: any) {
     }
 
     render() {
-      const { userStore, ...pageProps } = this.props;
+      const { ...pageProps } = this.props;
       return <WrappedComponent {...pageProps} />;
     }
   }
