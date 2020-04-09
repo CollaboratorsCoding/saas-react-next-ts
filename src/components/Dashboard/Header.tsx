@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
+
 import { IUserMe } from '@interfaces/store/user/';
+
 const StyledHeader = styled.div`
   width: 100%;
   height: 100%;

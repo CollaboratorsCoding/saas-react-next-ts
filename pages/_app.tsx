@@ -1,10 +1,11 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import withMobx from '../mobx/withMobx';
+import Router from 'next/router';
 import { Provider } from 'mobx-react';
 import NProgress from 'nprogress';
-import Layout from '@components/layout/Layout';
-import Router from 'next/router';
+
+import withMobx from '@mobx/withMobx';
+import Layout from '@components/Layout';
 import { IStore } from '@interfaces/store';
 
 Router.events.on('onRouteChangeStart', () => {

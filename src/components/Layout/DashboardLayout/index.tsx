@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-
 import styled from 'styled-components';
+
 import Meta from './Meta';
 import MenuSidebar from './MenuSidebar';
 import PreviewSidebar from './PreviewSidebar';

@@ -9,8 +9,8 @@ export interface IUserStore<T = IUserMe | null> {
   currentUser: T;
   checkedAuth: boolean;
   getMe: () => {};
-  signIn: (form: { email: string; password: string }) => {};
-  logout: () => {};
+  signIn(form: { email: string; password: string }): void;
+  logout(): void;
   me: T;
 }
 

@@ -1,11 +1,11 @@
 import React from 'react';
-
-import DashboardLayout from '@components/layout/DashboardLayout';
-import HomeLayout from '@components/layout/HomeLayout';
-import GlobalReset from '@styles/GlobalReset.styles';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 
-import { getRootRoute } from '@utils/routeUtils';
+import DashboardLayout from '@components/Layout/DashboardLayout';
+import HomeLayout from '@components/Layout/HomeLayout';
+import GlobalReset from '@styles/GlobalReset.styles';
+
+import { getRootRoute } from '@utils/serverUtils';
 
 const theme: DefaultTheme = {
   colors: {

@@ -1,13 +1,13 @@
 import React from 'react';
+import { AppContext } from 'next/app';
+
 import initializeStore from './store';
-import axios from '@services/axios';
+import axios from '@services/axios/axios.service';
 import { withAuth } from '@HOC/withAuth';
 import { IStore, IStoreInitialData } from '@interfaces/store';
-const isServer = typeof window === 'undefined';
-import {AppContext} from 'next/app';
-import { NextPage } from 'next';
+import { isServer } from '@utils/serverUtils';
 
-type Route ={ [key: string]: {authRequired?: boolean} };
+type Route = { [key: string]: { authRequired?: boolean } };
 const routes = {
   '/': {},
   '/features': {},
@@ -21,14 +21,14 @@ const routes = {
   },
 } as Route;
 
-function getOrCreateStore(initialState?: IStoreInitialData|undefined): IStore {
+function getOrCreateStore(
+  initialState?: IStoreInitialData | undefined
+): IStore {
   if (isServer) {
     return initializeStore(initialState);
   }
 
-  
   if (!window.__NEXT_MOBX_STORE__) {
- 
     window.__NEXT_MOBX_STORE__ = initializeStore(initialState);
   }
   return window.__NEXT_MOBX_STORE__;
@@ -36,7 +36,7 @@ function getOrCreateStore(initialState?: IStoreInitialData|undefined): IStore {
 
 export default (App: any) => {
   return class AppWithMobx extends React.Component {
-    private mobxStore: IStore | undefined
+    private mobxStore: IStore | undefined;
     static async getInitialProps(appContext: AppContext) {
       const mobxStore = getOrCreateStore();
 
@@ -48,7 +48,10 @@ export default (App: any) => {
           ? req.headers.cookie
           : {};
       }
-      if (!mobxStore.userStore.currentUser && !mobxStore.userStore.checkedAuth) {
+      if (
+        !mobxStore.userStore.currentUser &&
+        !mobxStore.userStore.checkedAuth
+      ) {
         await mobxStore.userStore.getMe();
       }
 
@@ -61,8 +64,8 @@ export default (App: any) => {
 
       // FETCH PAGE INITIAL DATA FOR SSR
       if (typeof Page.getInitialProps === 'function') {
-        const pageContext =  {...appContext.ctx, mobxStore};
-      
+        const pageContext = { ...appContext.ctx, mobxStore };
+
         appProps = await Page.getInitialProps(pageContext);
       }
 
@@ -72,7 +75,7 @@ export default (App: any) => {
       };
     }
 
-    constructor(props:any) {
+    constructor(props: any) {
       super(props);
       this.mobxStore = getOrCreateStore(props.initialMobxState);
     }

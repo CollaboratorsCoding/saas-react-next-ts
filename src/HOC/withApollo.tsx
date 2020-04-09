@@ -6,7 +6,8 @@ import withApollo from 'next-with-apollo';
 import { HttpLink } from 'apollo-link-http';
 import fetch from 'isomorphic-unfetch';
 import { WebSocketLink } from 'apollo-link-ws';
-import { SERVER, WEB_SOCKET_LINK } from '../../config';
+
+import { SERVER, WEB_SOCKET_LINK } from '../config';
 
 interface Definition {
   kind: string;

@@ -1,8 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Nav from './Nav';
 import NotificationBox from './NotificationBox';
-import styled from 'styled-components';
 
 const StyledMenuSidebar = styled.aside`
   grid-area: leftsidebar;

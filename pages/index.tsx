@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
+
 import { SubHeader, ExtraLargeHeader } from '@styles/Typography.styles';
 import { Button } from '@styles/Buttons.styles';
 import { IContextWithMobx } from '@interfaces/next';
-import Link from 'next/link';
+
 const Hero = styled.section`
   display: flex;
   flex-direction: column;

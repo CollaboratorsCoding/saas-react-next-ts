@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-
-import { MdDashboard, MdShowChart, MdToday, MdSettings } from 'react-icons/md';
 import Link from 'next/link';
+import { MdDashboard, MdShowChart, MdToday, MdSettings } from 'react-icons/md';
+
 const StyledNav = styled.ul`
   display: flex;
   margin-left: auto;

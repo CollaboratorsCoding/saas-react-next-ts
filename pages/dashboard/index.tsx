@@ -1,10 +1,10 @@
 import React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
-import withApollo from '@services/apollo/withApollo';
 import { ApolloClient } from 'apollo-client';
 import { observer, inject } from 'mobx-react';
-
 import styled from 'styled-components';
+
+import { ApolloProvider } from '@apollo/react-hooks';
+import withApollo from '@HOC/withApollo';
 import Header from '@components/Dashboard/Header';
 import { IUserStore, IUserMe } from '@interfaces/store/user/';
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import Nav from './Nav';
 import Link from 'next/link';
-
 import styled from 'styled-components';
 
+import Nav from './Nav';
 const StyledHeader = styled.header`
   grid-area: head;
   background: ${(props) => props.theme.colors.lightgray};

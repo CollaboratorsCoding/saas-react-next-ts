@@ -1,5 +1,6 @@
 import { observable, action, computed } from 'mobx';
-import authService from '@services/auth';
+
+import authService from '@services/auth/auth.service';
 import {
   IUserStore,
   IUserMe,
