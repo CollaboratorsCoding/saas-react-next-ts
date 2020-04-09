@@ -7,6 +7,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import withApollo from '@HOC/withApollo';
 import Header from '@components/Dashboard/Header';
 import { IUserStore, IUserMe } from '@interfaces/store/user/';
+import { IContextWithApollo } from '@interfaces/next';
 
 const DashboardWrapper = styled.section`
   display: flex;
@@ -47,9 +48,14 @@ class Dashboard extends React.Component<{
   userStore: IUserStore<IUserMe>;
   apollo: ApolloClient<any>;
 }> {
+  static getInitialProps = async ({ ApolloClient }: IContextWithApollo) => {
+    // calls page's `getInitialProps` and fills `appProps.pageProps`
+    console.log(ApolloClient);
+
+    return {};
+  };
   render() {
     const { userStore } = this.props;
-
     return (
       <ApolloProvider client={this.props.apollo}>
         <DashboardWrapper>

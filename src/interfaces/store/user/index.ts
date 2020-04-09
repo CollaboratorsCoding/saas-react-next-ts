@@ -8,7 +8,7 @@ export interface IUserMe {
 export interface IUserStore<T = IUserMe | null> {
   currentUser: T;
   checkedAuth: boolean;
-  getMe: () => {};
+  getMe(): void;
   signIn(form: { email: string; password: string }): void;
   logout(): void;
   me: T;
