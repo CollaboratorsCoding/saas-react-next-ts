@@ -30,6 +30,7 @@
       "@interfaces/*": ["./src/interfaces/*"],
       "@typeDefs/*": ["./src/types/*"],
       "@styles/*": ["./src/styles/*"],
+      "@schemas/*": ["./src/schemas/*"],
       "@mobx/*": ["./src/mobx/*"]
     }
   },

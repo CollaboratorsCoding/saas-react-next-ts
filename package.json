@@ -19,6 +19,7 @@
     "apollo-link-http": "^1.5.16",
     "apollo-link-ws": "^1.0.19",
     "axios": "^0.19.2",
+    "formik": "^2.1.4",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
@@ -34,7 +35,8 @@
     "react-icons": "^3.9.0",
     "react-toastify": "^5.5.0",
     "styled-components": "^5.0.1",
-    "subscriptions-transport-ws": "^0.9.16"
+    "subscriptions-transport-ws": "^0.9.16",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -42,6 +44,7 @@
     "@types/node": "^13.11.0",
     "@types/react": "^16.9.25",
     "@types/styled-components": "^5.0.1",
+    "@types/yup": "^0.26.35",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "babel-eslint": "^10.1.0",
