@@ -36,7 +36,7 @@ const IndexPage = () => (
 );
 IndexPage.getInitialProps = async ({ mobxStore }: IContextWithMobx) => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
-  console.log(mobxStore.userStore.me);
+  // console.log(mobxStore.userStore.me);
 
   return {};
 };

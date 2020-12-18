@@ -1,8 +1,9 @@
 import React from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 
-import DashboardLayout from '@components/Layout/DashboardLayout';
-import HomeLayout from '@components/Layout/HomeLayout';
+import DashboardLayout from '@components/layout/DashboardLayout';
+import AuthLayout from '@components/layout/AuthLayout';
+import HomeLayout from '@components/layout/HomeLayout';
 import GlobalReset from '@styles/GlobalReset.styles';
 
 import { getRootRoute } from '@utils/serverUtils';
@@ -37,10 +38,10 @@ const Layout = ({ children, currentRoute }: PageProps) => {
   if (rootRoute === 'dashboard') {
     Layout = DashboardLayout;
   }
-  // EXAMPLE
-  // if (rootRoute === 'signup') {
-  //   Layout = AuthLayout;
-  // }
+
+  if (rootRoute === 'signup' || rootRoute === 'signin') {
+    Layout = AuthLayout;
+  }
   return (
     <ThemeProvider theme={theme}>
       <GlobalReset />

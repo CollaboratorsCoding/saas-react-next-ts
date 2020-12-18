@@ -1,38 +1,42 @@
 import React, { useState } from 'react';
 import { Form, Formik, FormikProps } from 'formik';
+import { observer, inject } from 'mobx-react';
 import Router from 'next/router';
 
 import AuthNav from '@components/auth/nav';
 import Input from '@components/input';
 import Button from '@components/button';
 import { Main, AuthContent } from '@styles/AuthPage.styles';
-import { signUpSchema } from '@schemas/auth';
-import authService from '@services/auth/auth.service';
+import { signInSchema } from '@schemas/auth';
+import { IUserStore, IUserMe } from '@interfaces/store/user/';
 
-const SignUp = () => {
+interface Props {
+  userStore: IUserStore<IUserMe>;
+}
+
+const SignIn = ({ userStore }: Props) => {
   const [loading, setLoading] = useState(false);
   return (
     <>
-      <AuthNav message="Already a member?" title="Sign in" link="/signin" />
+      <AuthNav message="Not a member?" title="Sign Up Now" link="/signup" />
       <Main>
         <AuthContent>
-          <h2>Sign up to Dashboard</h2>
+          <h2>Sign in to Dashboard</h2>
           <Formik
             initialValues={{
               email: '',
-              confirmPassword: '',
               password: '',
             }}
-            validationSchema={signUpSchema}
+            validationSchema={signInSchema}
             onSubmit={async (values, actions) => {
-              try {
-                await setLoading(true);
-                await authService.signUp(values);
-                setLoading(false);
-                Router.push('/signin');
-              } catch (e) {
-                actions.setFieldError('general', e.response.data.message);
-                setLoading(false);
+              await setLoading(true);
+              await userStore.signIn(values);
+              setLoading(false);
+              if (userStore.error) {
+                actions.setFieldError('general', userStore.error);
+              }
+              if (userStore.me) {
+                Router.push('/');
               }
               actions.setSubmitting(false);
             }}>
@@ -43,13 +47,8 @@ const SignUp = () => {
                 </p>
                 <Input name="email" label="Email Address" />
                 <Input name="password" label="Password" type="password" />
-                <Input
-                  name="confirmPassword"
-                  label="Confirm Password"
-                  type="password"
-                />
-                <Button loading={loading} name="danger" type="submit">
-                  Sign Up
+                <Button name="danger" loading={loading} type="submit">
+                  Sign in
                 </Button>
               </Form>
             )}
@@ -60,4 +59,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default inject('userStore')(observer(SignIn));

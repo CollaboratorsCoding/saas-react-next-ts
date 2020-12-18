@@ -19,6 +19,7 @@
           "@utils": "./src/utils",
           "@interfaces": "./src/interfaces",
           "@HOC": "./src/HOC",
+          "@schemas": "./src/schemas",
           "@mobx": "./src/mobx"
         }
       }

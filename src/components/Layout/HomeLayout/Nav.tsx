@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { observer, inject } from 'mobx-react';
+import { IUserStore, IUserMe } from '@interfaces/store/user/';
 
 const StyledNavigation = styled.nav`
   grid-column: 2 / 5;
@@ -50,8 +52,9 @@ const StyledNavigation = styled.nav`
     }
   }
 `;
+type Props = { userStore?: IUserStore };
 
-function Nav() {
+function Nav({ userStore }: Props) {
   return (
     <StyledNavigation>
       <ul>
@@ -64,15 +67,25 @@ function Nav() {
         <Link href="/pricing">
           <a>Pricing</a>
         </Link>
-        <Link href="/dashboard">
-          <a>Dashboard</a>
-        </Link>
-        <Link href="/signup">
-          <a className="signup">Sign up</a>
-        </Link>
+        {!!userStore?.me && (
+          <Link href="/dashboard">
+            <a>Dashboard</a>
+          </Link>
+        )}
+
+        {!userStore?.me && (
+          <>
+            <Link href="/signin">
+              <a>Sign in</a>
+            </Link>
+            <Link href="/signup">
+              <a className="signup">Sign up</a>
+            </Link>
+          </>
+        )}
       </ul>
     </StyledNavigation>
   );
 }
 
-export default Nav;
+export default inject('userStore')(observer(Nav));

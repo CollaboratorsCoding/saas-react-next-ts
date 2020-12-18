@@ -1,3 +1,4 @@
+import { signInType } from '@schemas/auth';
 export interface IUserMe {
   email: string;
   password: string;
@@ -8,8 +9,9 @@ export interface IUserMe {
 export interface IUserStore<T = IUserMe | null> {
   currentUser: T;
   checkedAuth: boolean;
+  error: string;
   getMe(): void;
-  signIn(form: { email: string; password: string }): void;
+  signIn(form: signInType): void;
   logout(): void;
   me: T;
 }

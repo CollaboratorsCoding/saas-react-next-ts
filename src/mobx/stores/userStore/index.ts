@@ -6,10 +6,12 @@ import {
   IUserMe,
   IUserStoreInitialData,
 } from '@interfaces/store/user';
+import { signInType } from '@schemas/auth';
 
 class UserStore implements IUserStore {
   @observable currentUser: IUserMe | null = null;
   @observable checkedAuth = false;
+  @observable error = '';
 
   constructor(initialData: IUserStoreInitialData | undefined) {
     this.currentUser = initialData?.currentUser || null;
@@ -29,12 +31,13 @@ class UserStore implements IUserStore {
   }
 
   @action
-  async signIn(form = {}) {
+  async signIn(form: signInType) {
+    this.error = '';
     try {
       const res = await authService.signIn(form);
       this.currentUser = res.data;
     } catch (e) {
-      console.log(e);
+      this.error = e.response.data.message;
     }
   }
 

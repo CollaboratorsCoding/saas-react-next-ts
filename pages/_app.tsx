@@ -5,7 +5,7 @@ import { Provider } from 'mobx-react';
 import NProgress from 'nprogress';
 
 import withMobx from '@mobx/withMobx';
-import Layout from '@components/Layout';
+import Layout from '@components/layout';
 import { IStore } from '@interfaces/store';
 
 Router.events.on('onRouteChangeStart', () => {
